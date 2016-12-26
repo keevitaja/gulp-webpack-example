@@ -1,17 +1,19 @@
-# Gulp + Webpack example
+# Gulp + Webpack example for sass and javascript
 
 Includes VueJs-loader for single-file components and works well with Laravel Elixir php helper: 
 
 `{{ elixir('app.css') }}`
 
+## Compiles & Bundles
+
+- sass to css
+- ES6 to ES5 with babel
+
 ## Includes
 
-- js
-- sass
-- babel
-- vuejs
+- vuejs with component loader
 - sourcemaps
-- versioning
+- versioning (cache-busting)
 - notifications
 - node env detection
 
@@ -19,9 +21,9 @@ Includes VueJs-loader for single-file components and works well with Laravel Eli
 
 `gulp` will compile assets into the `public` directory
 
-`gulp watch` will autorun on filechanges
+`gulp watch` will watch for the file changes
 
-`gulp --production` will minify js and css, no notifications will be displayed
+`gulp --production` will minify js and css, no notifications will be displayed nor sourcemaps generated
 
 ## Todo
 
