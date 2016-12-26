@@ -23,7 +23,7 @@ gulp.task('js', ()=> {
         .pipe(gulp.dest(publicPath + 'js'))
         .pipe(util.env.production ? util.noop() : notify({
             message: 'Compiled scripts',
-            onLast: 'true'
+            onLast: true
         }))
 })
 
@@ -39,7 +39,7 @@ gulp.task('sass', (done)=> {
         .pipe(gulp.dest(publicPath + 'css'))
         .pipe(util.env.production ? util.noop() : notify({
             message: 'Compiled styles',
-            onLast: 'true'
+            onLast: true
         }))
 })
 
