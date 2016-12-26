@@ -23,6 +23,6 @@ Includes VueJs-loader for single-file components and works well with Laravel Eli
 
 `gulp --production` will minify js and css, no notifications will be displayed
 
-## Readme
+## Todo
 
 How the hell do we get javascript syntax errors checked ???
