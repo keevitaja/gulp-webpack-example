@@ -19,7 +19,7 @@ module.exports = {
               exclude: /node_modules/,
               loader: 'eslint',
             }
-      ],
+        ],
         loaders: [
             {
                 test: /\.vue$/,
@@ -33,9 +33,9 @@ module.exports = {
         ]
     },
     vue: {
-      loaders: {
-        js: 'babel!eslint'
-      }
+        loaders: {
+            js: 'babel!eslint'
+        }
     },
     resolve: {
         alias: {
