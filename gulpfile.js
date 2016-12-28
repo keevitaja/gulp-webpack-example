@@ -22,6 +22,7 @@ gulp.task('js', (done)=> {
         .pipe(plumber())
         .pipe(webpack(require('./webpack.config.js')))
         .on('error', (err)=> {
+            err.message = 'Scripts failed'
             notify().write(err)
         })
         .pipe(util.env.production ? uglify() : util.noop())
@@ -36,6 +37,7 @@ gulp.task('sass', (done)=> {
     return gulp.src(assetPath + 'sass/app.scss')
         .pipe(util.env.production ? util.noop() : sourcemaps.init())
         .pipe(sass().on('error', (err)=> {
+            err.message = 'Styles failed'
             notify().write(err)
             done()
         }))
