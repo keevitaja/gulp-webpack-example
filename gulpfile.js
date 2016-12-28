@@ -4,6 +4,7 @@ const fs = require('fs-extra')
 const gulp = require('gulp')
 const minify = require('gulp-clean-css')
 const notify = require('gulp-notify')
+const plumber = require('gulp-plumber')
 const sass = require('gulp-sass')
 const rev = require('gulp-rev')
 const run = require('run-sequence')
@@ -16,9 +17,13 @@ let assetPath = './resources/assets/'
 let buildPath = './public/build/'
 let publicPath = './public/'
 
-gulp.task('js', ()=> {
+gulp.task('js', (done)=> {
     return gulp.src(assetPath + 'js/app.js')
+        .pipe(plumber())
         .pipe(webpack(require('./webpack.config.js')))
+        .on('error', (err)=> {
+            notify().write(err)
+        })
         .pipe(util.env.production ? uglify() : util.noop())
         .pipe(gulp.dest(publicPath + 'js'))
         .pipe(util.env.production ? util.noop() : notify({

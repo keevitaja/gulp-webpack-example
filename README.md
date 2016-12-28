@@ -12,6 +12,7 @@ Includes VueJs-loader for single-file components and works well with Laravel Eli
 ## Includes
 
 - vuejs with component loader
+- eslint (works with vue components and babel)
 - sourcemaps
 - versioning (cache-busting)
 - notifications
@@ -27,4 +28,4 @@ Includes VueJs-loader for single-file components and works well with Laravel Eli
 
 ## Todo
 
-How the hell do we get javascript syntax errors checked ???
+- ~~How the hell do we get javascript syntax errors checked ???~~

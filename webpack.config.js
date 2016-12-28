@@ -8,6 +8,13 @@ module.exports = {
     },
     devtool: util.env.production ? false : 'source-map',
     module: {
+      preLoaders: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'eslint',
+        },
+      ],
         loaders: [
             {
                 test: /\.vue$/,
@@ -19,6 +26,11 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
+    },
+    vue: {
+      loaders: {
+        js: 'babel!eslint'
+      }
     },
     resolve: {
         alias: {
