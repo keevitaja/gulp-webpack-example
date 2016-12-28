@@ -8,12 +8,17 @@ module.exports = {
     },
     devtool: util.env.production ? false : 'source-map',
     module: {
-      preLoaders: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'eslint',
-        },
+        preLoaders: [
+            {
+                test: /\.vue$/,
+                loader: 'eslint',
+                exclude: /node_modules/
+            },
+            {
+              test: /\.jsx?$/,
+              exclude: /node_modules/,
+              loader: 'eslint',
+            }
       ],
         loaders: [
             {

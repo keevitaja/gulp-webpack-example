@@ -58,7 +58,11 @@ gulp.task('version', ()=> {
 })
 
 gulp.task('monitor', (done)=> {
-    gulp.watch([assetPath + 'js/**/*.js', assetPath + 'sass/**/*.scss'], ['default'])
+    gulp.watch([
+        assetPath + 'js/**/*.vue',
+        assetPath + 'js/**/*.js',
+        assetPath + 'sass/**/*.scss'
+    ], ['default'])
 })
 
 gulp.task('watch', (done)=> {
