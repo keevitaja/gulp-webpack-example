@@ -17,13 +17,19 @@ let assetPath = './resources/assets/'
 let buildPath = './public/build/'
 let publicPath = './public/'
 
+const notifyError = (err, message)=> {
+    if ( ! util.env.production) {
+        err.message = message
+        notify().write(err)
+    }
+}
+
 gulp.task('js', (done)=> {
     return gulp.src(assetPath + 'js/app.js')
         .pipe(plumber())
         .pipe(webpack(require('./webpack.config.js')))
         .on('error', (err)=> {
-            err.message = 'Scripts failed'
-            notify().write(err)
+            notifyError(err, 'Scripts failed to compile!')
         })
         .pipe(util.env.production ? uglify() : util.noop())
         .pipe(gulp.dest(publicPath + 'js'))
@@ -37,8 +43,8 @@ gulp.task('sass', (done)=> {
     return gulp.src(assetPath + 'sass/app.scss')
         .pipe(util.env.production ? util.noop() : sourcemaps.init())
         .pipe(sass().on('error', (err)=> {
-            err.message = 'Styles failed'
-            notify().write(err)
+            console.log(err)
+            notifyError(err, 'Styles failed to compile!')
             done()
         }))
         .pipe(util.env.production ? minify() : util.noop())
